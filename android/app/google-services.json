@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "989588723911",
+    "project_id": "vs-job-timer",
+    "storage_bucket": "vs-job-timer.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:989588723911:android:2a3c544d8cd222921846e2",
+        "android_client_info": {
+          "package_name": "br.net.virtualsystem.job_timer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "989588723911-tlsp4pshp5acaujp8o8v908b8d6fob2c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmkURJZ0GwPcfhCxCtohofTUIK8dsAx4k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "989588723911-tlsp4pshp5acaujp8o8v908b8d6fob2c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
