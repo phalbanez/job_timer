@@ -10,6 +10,7 @@ class Project {
   @Id()
   int? id;
   late String name;
+  late int estimate;
   @ProjectStatusConvert()
   late ProjectStatus status;
 
