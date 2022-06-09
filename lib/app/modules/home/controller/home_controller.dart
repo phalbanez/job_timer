@@ -17,11 +17,19 @@ class HomeController extends Cubit<HomeState> {
         super(HomeState.initial());
 
   Future<void> loadProjects() async {
-    try {
-      emit(state.copyWith(status: HomeStatus.loading));
-      final projects = await _projectService.findByStatus(state.projectFilter);
+    filter(state.projectFilter);
+  }
 
-      emit(state.copyWith(status: HomeStatus.complete, projects: projects));
+  Future<void> filter(ProjectStatus status) async {
+    try {
+      emit(state.copyWith(status: HomeStatus.loading, projects: []));
+      final projects = await _projectService.findByStatus(status);
+      emit(
+        state.copyWith(
+            status: HomeStatus.complete,
+            projects: projects,
+            projectFilter: status),
+      );
     } catch (e, s) {
       const message = 'Erro ao buscar os projetos';
       log(message, error: e, stackTrace: s);
