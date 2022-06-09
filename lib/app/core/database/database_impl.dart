@@ -21,4 +21,11 @@ class DatabaseImpl implements Database {
 
     return _databaseInstace!;
   }
+
+  Future<void> emptyDatabase() async {
+    final connection = await openConnection();
+    await connection.writeTxn((isar) {
+      return isar.clear();
+    });
+  }
 }
