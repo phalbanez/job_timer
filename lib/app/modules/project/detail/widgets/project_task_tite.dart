@@ -1,7 +1,14 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:job_timer/app/view_models/project_task_model.dart';
 
 class ProjectTaskTite extends StatelessWidget {
-  const ProjectTaskTite({Key? key}) : super(key: key);
+  final ProjectTaskModel task;
+
+  const ProjectTaskTite({
+    Key? key,
+    required this.task,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,18 +22,18 @@ class ProjectTaskTite extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Text('Task'),
+          Text(task.name),
           RichText(
-            text: const TextSpan(
+            text: TextSpan(
               children: [
-                TextSpan(
+                const TextSpan(
                   text: 'Duração',
                   style: TextStyle(color: Colors.grey),
                 ),
-                TextSpan(text: '    '),
+                const TextSpan(text: '    '),
                 TextSpan(
-                  text: '4h(s)',
-                  style: TextStyle(
+                  text: '${task.duration}h(s)',
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
                   ),

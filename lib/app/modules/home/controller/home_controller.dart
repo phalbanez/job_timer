@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
@@ -30,10 +29,14 @@ class HomeController extends Cubit<HomeState> {
             projects: projects,
             projectFilter: status),
       );
+
+      log('LOG--> TESTE DE LOG');
     } catch (e, s) {
       const message = 'Erro ao buscar os projetos';
       log(message, error: e, stackTrace: s);
       emit(state.copyWith(status: HomeStatus.failure));
     }
   }
+
+  void updateList() => filter(state.projectFilter);
 }
