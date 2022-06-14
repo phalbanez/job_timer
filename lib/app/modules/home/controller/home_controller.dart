@@ -3,16 +3,21 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:job_timer/app/entities/project_status.dart';
+import 'package:job_timer/app/services/auth/auth_service.dart';
 import 'package:job_timer/app/services/projects/project_service.dart';
 import 'package:job_timer/app/view_models/project_model.dart';
 
 part 'home_state.dart';
 
 class HomeController extends Cubit<HomeState> {
+  final AuthService _authService;
   final ProjectService _projectService;
 
-  HomeController({required ProjectService projectService})
-      : _projectService = projectService,
+  HomeController({
+    required AuthService authService,
+    required ProjectService projectService,
+  })  : _authService = authService,
+        _projectService = projectService,
         super(HomeState.initial());
 
   Future<void> loadProjects() async {
@@ -29,8 +34,6 @@ class HomeController extends Cubit<HomeState> {
             projects: projects,
             projectFilter: status),
       );
-
-      log('LOG--> TESTE DE LOG');
     } catch (e, s) {
       const message = 'Erro ao buscar os projetos';
       log(message, error: e, stackTrace: s);
@@ -39,4 +42,6 @@ class HomeController extends Cubit<HomeState> {
   }
 
   void updateList() => filter(state.projectFilter);
+
+  Future<void> logout() => _authService.signOut();
 }

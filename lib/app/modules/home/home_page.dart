@@ -21,9 +21,10 @@ class HomePage extends StatelessWidget {
         }
       },
       child: Scaffold(
-        drawer: const Drawer(
+        drawer: Drawer(
           child: SafeArea(
             child: ListTile(
+              onTap: () => controller.logout(),
               title: Text('Sair'),
             ),
           ),

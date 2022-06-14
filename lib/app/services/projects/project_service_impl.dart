@@ -29,14 +29,16 @@ class ProjectServiceImpl implements ProjectService {
   Future<ProjectModel> findById(final int projectId) async {
     final project = await _projectRepository.findById(projectId);
 
-    return ProjectModel.fromEntity(project);
+    return _sortTasks(ProjectModel.fromEntity(project));
   }
 
   @override
   Future<List<ProjectModel>> findByStatus(final ProjectStatus status) async {
     final projects = await _projectRepository.findByStatus(status);
 
-    return projects.map(ProjectModel.fromEntity).toList();
+    return projects
+        .map((project) => _sortTasks(ProjectModel.fromEntity(project)))
+        .toList();
   }
 
   @override
@@ -53,4 +55,9 @@ class ProjectServiceImpl implements ProjectService {
 
   @override
   Future<void> finish(int projectId) => _projectRepository.finish(projectId);
+}
+
+ProjectModel _sortTasks(ProjectModel projectModel) {
+  projectModel.tasks.sort((a, b) => b.id!.compareTo(a.id!));
+  return projectModel;
 }

@@ -2,7 +2,7 @@ import 'package:asuka/snackbars/asuka_snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:job_timer/app/core/ui/button_with_loader.dart';
-import 'package:job_timer/app/modules/project/detail/widgets/controller/task_controller.dart';
+import 'package:job_timer/app/modules/project/task/controller/task_controller.dart';
 import 'package:validatorless/validatorless.dart';
 
 class TaskPage extends StatefulWidget {
