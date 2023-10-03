@@ -19,8 +19,8 @@ class ProjectRepositoryImpl implements ProjectRepository {
     try {
       final connection = await _database.openConnection();
 
-      await connection.writeTxn((isar) {
-        return isar.projects.put(project);
+      await connection.writeTxn(() {
+        return connection.projects.put(project);
       });
     } on IsarError catch (e, s) {
       const message = 'Erro ao cadastrar projeto';
@@ -56,7 +56,7 @@ class ProjectRepositoryImpl implements ProjectRepository {
 
       project.tasks.add(task);
 
-      await connection.writeTxn((isar) async => await project.tasks.save());
+      await connection.writeTxn(() async => await project.tasks.save());
 
       return project;
     } on IsarError catch (e, s) {
@@ -74,8 +74,8 @@ class ProjectRepositoryImpl implements ProjectRepository {
 
       project.status = ProjectStatus.finalizado;
 
-      await connection.writeTxn((isar) async =>
-          await connection.projects.put(project, saveLinks: true));
+      await connection
+          .writeTxn(() async => await connection.projects.put(project));
     } on IsarError catch (e, s) {
       const message = 'Erro ao finalizar projeto';
       log(message, error: e, stackTrace: s);

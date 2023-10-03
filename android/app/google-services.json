@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "989588723911-c44e77d90e56m6cf0ej8dbv3d12qq3u3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.net.virtualsystem.job_timer",
+            "certificate_hash": "cbff028ff33ef2d25783d164f53eff96a4c83abd"
+          }
+        },
+        {
           "client_id": "989588723911-tlsp4pshp5acaujp8o8v908b8d6fob2c.apps.googleusercontent.com",
           "client_type": 3
         }

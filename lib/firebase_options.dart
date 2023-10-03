@@ -54,7 +54,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyBmkURJZ0GwPcfhCxCtohofTUIK8dsAx4k',
-    appId: '1:989588723911:android:37e0a1fc931fd9641846e2',
+    appId: '1:989588723911:android:2a3c544d8cd222921846e2',
     messagingSenderId: '989588723911',
     projectId: 'vs-job-timer',
     storageBucket: 'vs-job-timer.appspot.com',

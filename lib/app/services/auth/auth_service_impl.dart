@@ -12,7 +12,7 @@ class AuthServiceImpl implements AuthService {
 
   @override
   Future<void> signIn() async {
-    final googleUser = await GoogleSignIn().signIn();
+    final googleUser = await GoogleSignIn(scopes: ['email']).signIn();
 
     final googleAuth = await googleUser?.authentication;
 
@@ -27,7 +27,7 @@ class AuthServiceImpl implements AuthService {
   @override
   Future<void> signOut() async {
     final connection = await _database.openConnection();
-    await connection.writeTxn((isar) async => connection.clear());
+    await connection.writeTxn(() async => connection.clear());
 
     await FirebaseAuth.instance.signOut();
     GoogleSignIn().disconnect();

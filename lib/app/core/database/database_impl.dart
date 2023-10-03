@@ -13,7 +13,7 @@ class DatabaseImpl implements Database {
     if (_databaseInstace == null) {
       final dir = await getApplicationSupportDirectory();
       _databaseInstace = await Isar.open(
-        schemas: [ProjectTaskSchema, ProjectSchema],
+        [ProjectTaskSchema, ProjectSchema],
         directory: dir.path,
         inspector: true,
       );
@@ -24,8 +24,8 @@ class DatabaseImpl implements Database {
 
   Future<void> emptyDatabase() async {
     final connection = await openConnection();
-    await connection.writeTxn((isar) {
-      return isar.clear();
+    await connection.writeTxn(() async {
+      await connection.clear();
     });
   }
 }
