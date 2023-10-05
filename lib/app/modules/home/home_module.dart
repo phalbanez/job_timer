@@ -1,21 +1,27 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:job_timer/app/core/modular/modular_bind_config_bloc.dart';
+import 'package:job_timer/app/core_module.dart';
 import 'package:job_timer/app/modules/home/controller/home_controller.dart';
 import 'package:job_timer/app/modules/home/home_page.dart';
-import 'package:modular_bloc_bind/modular_bloc_bind.dart';
 
 class HomeModule extends Module {
   @override
-  List<Bind> get binds => [
-        BlocBind.lazySingleton<HomeController>(
-            (i) => HomeController(authService: i(), projectService: i())),
+  List<Module> get imports => [
+        CoreModule(),
       ];
 
   @override
-  List<ModularRoute> get routes => [
-        ChildRoute('/', child: (context, args) {
-          final controller = Modular.get<HomeController>()..loadProjects();
+  void binds(Injector i) {
+    i.addLazySingleton<HomeController>(HomeController.new,
+        config: ModularBindConfigBloc.config());
+  }
 
-          return HomePage(controller: controller);
-        }),
-      ];
+  @override
+  void routes(RouteManager r) {
+    r.child('/', child: (context) {
+      final controller = Modular.get<HomeController>()..loadProjects();
+
+      return HomePage(controller: controller);
+    });
+  }
 }

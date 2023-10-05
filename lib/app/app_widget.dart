@@ -13,8 +13,7 @@ class AppWidget extends StatelessWidget {
       // builder: asuka.builder,
       builder: Asuka.builder,
       theme: AppConfigUI.theme,
-      routeInformationParser: Modular.routeInformationParser,
-      routerDelegate: Modular.routerDelegate,
+      routerConfig: Modular.routerConfig,
     );
   }
 }

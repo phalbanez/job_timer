@@ -5,9 +5,9 @@ import 'package:job_timer/app/modules/project/task/task_module.dart';
 
 class ProjectModule extends Module {
   @override
-  List<ModularRoute> get routes => [
-        ModuleRoute('/register', module: ProjectRegisterModule()),
-        ModuleRoute('/detail', module: ProjectDetailModule()),
-        ModuleRoute('/task', module: TaskModule()),
-      ];
+  void routes(RouteManager r) {
+    r.module('/register', module: ProjectRegisterModule());
+    r.module('/detail', module: ProjectDetailModule());
+    r.module('/task', module: TaskModule());
+  }
 }
